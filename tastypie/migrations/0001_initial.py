@@ -10,6 +10,7 @@ from tastypie.compat import AUTH_USER_MODEL
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        orm[AUTH_USER_MODEL]._meta.db_table= "auth_user"
 
         # Adding model 'ApiAccess'
         db.create_table('tastypie_apiaccess', (

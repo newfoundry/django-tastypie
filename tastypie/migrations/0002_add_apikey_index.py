@@ -10,6 +10,8 @@ from tastypie.compat import AUTH_USER_MODEL
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        orm[AUTH_USER_MODEL]._meta.db_table= "auth_user"
+        
         if not db.backend_name in ('mysql', 'sqlite'):
             # Adding index on 'ApiKey', fields ['key']
             db.create_index('tastypie_apikey', ['key'])
